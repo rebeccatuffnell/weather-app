@@ -3,13 +3,14 @@ import Image from "next/image";
 import axios from "axios";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import Weather from "../components/Weather/Weather";
 
 export default function Home() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`;
 
   const fetchWeather = (e) => {
     e.preventDefault();
@@ -31,18 +32,21 @@ export default function Home() {
       </Head>
 
       {/* overlay */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]" />
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/15 z-[1]" />
 
       {/* background image */}
       <Image
-        src="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
         layout="fill"
         className="object-cover"
       />
 
       {/* search */}
       <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10">
-        <form onSubmit={fetchWeather} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border-gray-300 text-white rounded-2xl">
+        <form
+          onSubmit={fetchWeather}
+          className="flex justify-between items-center w-full m-auto p-3 bg-transparent border-gray-300 text-white rounded-2xl"
+        >
           <div>
             <input
               onChange={(e) => setCity(e.target.value)}
@@ -56,6 +60,9 @@ export default function Home() {
           </button>
         </form>
       </div>
+
+      {/* weather */}
+      {weather.main && <Weather data={weather} />}
     </div>
   );
 }
