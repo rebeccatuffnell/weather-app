@@ -30,21 +30,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-{/* overlay */}
-<div className="absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]"/>
+      {/* overlay */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]" />
 
-
-{/* background image */}
+      {/* background image */}
       <Image
         src="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         layout="fill"
         className="object-cover"
       />
 
-{/* search */}
-
-
+      {/* search */}
+      <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10">
+        <form onSubmit={fetchWeather} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border-gray-300 text-white rounded-2xl">
+          <div>
+            <input
+              onChange={(e) => setCity(e.target.value)}
+              className="bg-transparent border-none text-white focus:outline-none text-2xl"
+              type="text"
+              placeholder="search city"
+            />
+          </div>
+          <button onClick={fetchWeather}>
+            <BsSearch size={20} />
+          </button>
+        </form>
+      </div>
     </div>
-
   );
 }
