@@ -3,9 +3,9 @@ import Image from "next/image";
 import axios from "axios";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import Weather from "../components/Weather/Weather.jsx";
+import { Weather } from "../components/Weather/Weather";
 
-export default function Home() {
+function Home() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
@@ -66,3 +66,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
