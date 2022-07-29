@@ -1,4 +1,5 @@
 import React from "react";
+import Home from "../../pages";
 
 const Weather = ({ data }) => {
   return (
