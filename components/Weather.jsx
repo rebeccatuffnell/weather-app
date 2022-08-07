@@ -19,7 +19,9 @@ const Weather = ({ data }) => {
         </div>
         <div>
           <p className="text-6xl">{data.main.temp.toFixed(0)}&#8451;</p>
-          <p className="text-6xl">{data.main.temp.toFixed(0)}&#8457;</p>
+          <p className="text-6xl">
+            {((data.main.temp * 9) / 5 + 32).toFixed(0)}&#8457;
+          </p>
         </div>
       </div>
     </div>
