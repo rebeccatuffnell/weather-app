@@ -3,23 +3,12 @@ import React from "react";
 
 const Weather = ({ data }) => {
   // console.table(data);
-  console.log(data);
-
-  let d = new Date()
-  console.log(d)
-  let localTime = d.getTime()
-  console.log(localTime)
-  let localOffset = d.getTimezoneOffset() * 60000
-  console.log(localOffset)
-  let utc = localTime + localOffset
-  console.log(utc)
-  let dateAndTime = utc + (1000 * data.timezone)
-  console.log(dateAndTime)
-  const nd = new Date(dateAndTime)
-  console.log(nd)
-  // let dt = nd.slice(0, 24);
-  // console.log(nd.substring(0, 24))
-  
+  let d = new Date();
+  let localTime = d.getTime();
+  let localOffset = d.getTimezoneOffset() * 60000;
+  let utc = localTime + localOffset;
+  let dateAndTime = utc + 1000 * data.timezone;
+  const nd = new Date(dateAndTime).toString();
 
   return (
     <div className="relative flex justify-between pt-12">
@@ -27,7 +16,7 @@ const Weather = ({ data }) => {
         {/* Top */}
         <p className="text-3xl text-center pb-6">{data.name}</p>
         <p className="text-3xl text-center pb-6">{data.sys.country}</p>
-        <p className="text-2xl text-center pb-6">{nd}</p>
+        <p className="text-2xl text-center pb-6">{nd.slice(0, 24)}</p>
         <div className="flex flex-col items-center m-8">
           <Image
             src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
