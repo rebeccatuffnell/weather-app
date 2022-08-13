@@ -16,7 +16,7 @@ const Weather = ({ data }) => {
         {/* Top */}
         <p className="text-3xl text-center pb-6">{data.name}</p>
         <p className="text-3xl text-center pb-6">{data.sys.country}</p>
-        <p className="text-2xl text-center pb-6">{nd.slice(0, 24)}</p>
+        <p className="text-2xl text-center pb-6">{nd.slice(0, 21)}</p>
         <div className="flex flex-col items-center m-8">
           <Image
             src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
