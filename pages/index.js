@@ -38,7 +38,7 @@ export default function Home() {
         <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]' />
         {/* Background image */}
         <Image
-          src='https://images.unsplash.com/photo-1558486012-817176f84c6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1804&q=80'
+          src='https://images.unsplash.com/photo-1531147646552-1eec68116469?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
           alt="clouds in the sky"
           layout='fill'
           className='object-cover'

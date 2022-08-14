@@ -7,16 +7,18 @@ const Weather = ({ data }) => {
   let localTime = d.getTime();
   let localOffset = d.getTimezoneOffset() * 60000;
   let utc = localTime + localOffset;
-  let dateAndTime = utc + 1000 * data.timezone;
-  const nd = new Date(dateAndTime).toString();
+  let dt = utc + 1000 * data.timezone;
+  const dateAndTime = new Date(dt).toString();
 
   return (
-    <div className="relative flex justify-between pt-12">
-      <div className="bg-black/50 rounded-md relative flex flex-col justify-between max-w-[480px] w-full m-auto p-8 text-gray-300 z-10">
-        {/* Top */}
+    
+    <div className="relative flex justify-between mt-12 rounded-md mx-auto max-w-[475px] bg-gradient-to-r p-[10px] from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]">
+      <div className="bg-black/50 rounded-md relative flex flex-col justify-between w-full m-auto p-8 text-gray-300 z-10">
+        {/* city, country, and date & time */}
         <p className="text-3xl text-center pb-6">{data.name}</p>
         <p className="text-3xl text-center pb-6">{data.sys.country}</p>
-        <p className="text-2xl text-center pb-6">{nd.slice(0, 21)}</p>
+        <p className="text-2xl text-center pb-6">{dateAndTime.slice(0, 21)}</p>
+        {/* weather icon and weather type */}
         <div className="flex flex-col items-center m-8">
           <Image
             src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
@@ -26,6 +28,7 @@ const Weather = ({ data }) => {
           />
           <p className="text-2xl">{data.weather[0].main}</p>
         </div>
+        {/* temperature */}
         <div className="relative flex flex-row justify-between m-4">
           <p className="text-5xl">{data.main.temp.toFixed(0)}&#8451;</p>
           <p className="text-5xl">
