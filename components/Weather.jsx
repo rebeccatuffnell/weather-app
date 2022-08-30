@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import { React, useState } from "react";
 import { TbTemperatureCelsius } from "react-icons/tb";
 import { TbTemperatureFahrenheit } from "react-icons/tb";
 
@@ -12,6 +12,19 @@ const Weather = ({ data }) => {
   let utc = localTime + localOffset;
   let dt = utc + 1000 * data.timezone;
   const dateAndTime = new Date(dt).toString();
+
+  // toggle temperature unit
+  const [unit, setUnit] = useState("c");
+  const [temp, setTemp] = useState(data.main.temp.toFixed(0));
+    const handleChange = () => {
+        if (unit === "c") {
+            setUnit("f");
+            setTemp(((data.main.temp * 9) / 5 + 32).toFixed(0))
+        } else {
+            setUnit("c");
+            setTemp(data.main.temp.toFixed(0))
+        }
+    };
 
   return (
     <div className="relative flex justify-between mt-12 rounded-md mx-auto max-w-[475px] bg-gradient-to-r p-[10px] from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]">
@@ -35,10 +48,17 @@ const Weather = ({ data }) => {
         {/* temperature */}
         <div className="relative flex justify-between m-4">
           <p className="text-5xl flex flex-row">{data.main.temp.toFixed(0)}<span className="text-3xl"><TbTemperatureCelsius /></span></p>
+          <p className="text-5xl flex flex-row">{temp}{unit}</p>
           <p className="text-5xl flex flex-row">
             {((data.main.temp * 9) / 5 + 32).toFixed(0)}<span className="text-3xl"><TbTemperatureFahrenheit /></span>
           </p>
         </div>
+        {/* <button className="temp" onClick={toggleDisplay}>
+            {unit}
+        </button> */}
+        <label>
+				  <input type="checkbox" onChange={handleChange}/>
+				</label>
       </div>
     </div>
   );
