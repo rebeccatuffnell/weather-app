@@ -53,12 +53,32 @@ const Weather = ({ data }) => {
             {((data.main.temp * 9) / 5 + 32).toFixed(0)}<span className="text-3xl"><TbTemperatureFahrenheit /></span>
           </p>
         </div>
-        {/* <button className="temp" onClick={toggleDisplay}>
-            {unit}
-        </button> */}
-        <label>
+ 
+        {/* <label>
 				  <input type="checkbox" onChange={handleChange}/>
-				</label>
+				</label> */}
+
+        <div className="relative flex flex-col items-center overflow-hidden">
+            <div className="flex">
+                <label className="inline-flex relative items-center cursor-pointer">
+                    <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={unit}
+                        readOnly
+                    />
+                    <div
+                        onClick={() => {
+                            handleChange()
+                        }}
+                        className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
+                    ></div>
+                </label>
+            </div>
+        </div>
+
+
+
       </div>
     </div>
   );
