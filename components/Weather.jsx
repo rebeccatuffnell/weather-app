@@ -48,7 +48,7 @@ const Weather = ({ data }) => {
         {/* temperature */}
         <div className="relative flex justify-between m-4">
           <p className="text-5xl flex flex-row">{data.main.temp.toFixed(0)}<span className="text-3xl"><TbTemperatureCelsius /></span></p>
-          <p className="text-5xl flex flex-row">{temp}{unit}</p>
+          {/* <p className="text-5xl flex flex-row">{temp}{unit}</p> */}
           <p className="text-5xl flex flex-row">
             {((data.main.temp * 9) / 5 + 32).toFixed(0)}<span className="text-3xl"><TbTemperatureFahrenheit /></span>
           </p>
@@ -58,7 +58,7 @@ const Weather = ({ data }) => {
 				  <input type="checkbox" onChange={handleChange}/>
 				</label> */}
 
-        <div className="relative flex flex-col items-center overflow-hidden">
+        {/* <div className="relative flex flex-col items-center overflow-hidden">
             <div className="flex">
                 <label className="inline-flex relative items-center cursor-pointer">
                     <input
@@ -75,7 +75,7 @@ const Weather = ({ data }) => {
                     ></div>
                 </label>
             </div>
-        </div>
+        </div> */}
 
 
 
