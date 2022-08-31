@@ -16,6 +16,8 @@ const Weather = ({ data }) => {
   // toggle temperature unit
   const [unit, setUnit] = useState("c");
   const [temp, setTemp] = useState(data.main.temp.toFixed(0));
+  const [toggle, setToggle] = useState(true);
+  const toggleClass = " transform translate-x-5";
     const handleChange = () => {
         if (unit === "c") {
             setUnit("f");
@@ -48,38 +50,34 @@ const Weather = ({ data }) => {
         {/* temperature */}
         <div className="relative flex justify-between m-4">
           <p className="text-5xl flex flex-row">{data.main.temp.toFixed(0)}<span className="text-3xl"><TbTemperatureCelsius /></span></p>
-          {/* <p className="text-5xl flex flex-row">{temp}{unit}</p> */}
+          <p className="text-5xl flex flex-row">{temp}{unit}</p>
           <p className="text-5xl flex flex-row">
             {((data.main.temp * 9) / 5 + 32).toFixed(0)}<span className="text-3xl"><TbTemperatureFahrenheit /></span>
           </p>
         </div>
- 
-        {/* <label>
-				  <input type="checkbox" onChange={handleChange}/>
-				</label> */}
-
-        {/* <div className="relative flex flex-col items-center overflow-hidden">
-            <div className="flex">
-                <label className="inline-flex relative items-center cursor-pointer">
-                    <input
-                        type="checkbox"
-                        className="sr-only peer"
-                        checked={unit}
-                        readOnly
-                    />
-                    <div
-                        onClick={() => {
-                            handleChange()
-                        }}
-                        className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
-                    ></div>
-                </label>
-            </div>
-        </div> */}
 
 
+      <div className="flex flex-col justify-center items-center p-4">
+        {/*   Switch Container */}
+
+        <div
+          className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-400 rounded-full p-1 cursor-pointer"
+          onClick={() => {
+            setToggle(!toggle);
+            handleChange()
+          }}
+        >
+          {/* Switch */}
+          <div
+            className={
+              "bg-black md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" +
+              (toggle ? null : toggleClass)
+            }
+          ></div>
+        </div>
 
       </div>
+    </div>
     </div>
   );
 };
