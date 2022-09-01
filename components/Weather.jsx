@@ -50,25 +50,25 @@ const Weather = ({ data }) => {
         {/* temperature */}
         <div className="relative flex justify-between m-4">
           <p className="text-5xl flex flex-row">{data.main.temp.toFixed(0)}<span className="text-3xl"><TbTemperatureCelsius /></span></p>
-          <p className="text-5xl flex flex-row">{temp}{unit}</p>
+          {/* <p className="text-5xl flex flex-row">{temp}{unit}</p> */}
           <p className="text-5xl flex flex-row">
             {((data.main.temp * 9) / 5 + 32).toFixed(0)}<span className="text-3xl"><TbTemperatureFahrenheit /></span>
           </p>
         </div>
 
-
-      <div className="flex flex-col justify-center items-center p-4">
+{/* 
+      <div className="flex flex-col justify-center items-center p-4"> */}
         {/*   Switch Container */}
-
+{/* 
         <div
           className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-400 rounded-full p-1 cursor-pointer"
           onClick={() => {
             setToggle(!toggle);
             handleChange()
           }}
-        >
+        > */}
           {/* Switch */}
-          <div
+          {/* <div
             className={
               "bg-black md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" +
               (toggle ? null : toggleClass)
@@ -76,7 +76,7 @@ const Weather = ({ data }) => {
           ></div>
         </div>
 
-      </div>
+      </div> */}
     </div>
     </div>
   );
